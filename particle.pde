@@ -1,12 +1,12 @@
 class particle {
  
     PVector pos,vel,init_pos;
-    color col;
+    int con = 0;
     
     // pos : position of particle at each frame from the origin(top-left of window)
     // vel : velocity of particle
     // init_pos : initial/starting position of the particle
-    // col : color of the particle
+    // con : no of connection the particle has
     
     // constructor 
     particle(){
