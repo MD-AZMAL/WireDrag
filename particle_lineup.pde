@@ -1,9 +1,13 @@
 ArrayList<particle> particles; // array list of particles
 float d; // distance variable
+col c; // color variable
+int max_con; // maximum connections a particle may have
 
 void setup(){
     size(600,600);
     particles = new ArrayList<particle>();
+    c = new col();
+    max_con = 6;
  
 }
 
@@ -16,11 +20,15 @@ void draw(){
      for(particle p2 : particles)
         if(p2 != p){ // if p2 and p are not the same particle
           d = dist(p.pos.x,p.pos.y,p2.pos.x,p2.pos.y); // calculate distance between them 
-          if(d < 70 ){  // draw line if condition is satisfied
-            stroke(p.col);
-            line(p.pos.x,p.pos.y,p2.pos.x,p2.pos.y);
+           if(d < 70 && p.con < max_con) {  // draw line if condition is satisfied
+              stroke(c.col.x,c.col.y,c.col.z);
+              line(p.pos.x,p.pos.y,p2.pos.x,p2.pos.y);
+              // increment connection for both particles
+              p.con++;
+              p2.con++;
           }
         }
+        p.con = 0; // set no of connection back to zero
 }
 
  // if the particle has travelled a distance of 80 from its initial position then delete it
